@@ -13,7 +13,7 @@ async function timer() {
       } else {
         resolve("success");
       }
-    }, callbackTimer);
+    }, callbackTimer * 1000);
   });
 }
 
@@ -31,36 +31,22 @@ async function addMessage(req, res) {
   try {
     const result = await newMessage.save();
     if (result) {
-      // await timer();
+      await timer();
       res.send({ actor, message: text });
     }
   } catch (e) {
     res.send({ actor, message: e });
   }
 }
-// function controllerSendHello(req, res) {
-//   const response = { text: "Hello World" };
-//   res.send(response);
-// }
 
-// function controllerSetPerson(req, res) {
-//   if (!req.body) res.send(req);
-//   const isMale = req.body.isMale;
-//   const name = req.body.name;
+function getMessages(req, res) {
+  Message.find({}, (err, list) => {
+    if (err) throw err;
+    res.send(list);
+  });
+}
 
-//   const newPerson = new Person({ isMale, name });
-//   newPerson.save((err) => {
-//     if (err) throw err;
-//   });
-//   res.send(200);
-// }
-
-// function controllerGetPersonList(req, res) {
-//   Person.find({}, (err, list) => {
-//     if (err) throw err;
-//     res.send(list);
-//   });
-// }
 module.exports = {
   addMessage,
+  getMessages,
 };

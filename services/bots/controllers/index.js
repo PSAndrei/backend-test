@@ -1,4 +1,3 @@
-const express = require("express");
 const axios = require("axios");
 
 console.log(`http://${process.env.COREHOST}:${process.env.COREPORT}`);
@@ -20,4 +19,3 @@ const sendMessage = async (request, response) => {
 };
 
 module.exports = { getMessages, sendMessage };
-//172.26.0.3
