@@ -7,4 +7,9 @@ const personSchema = new Schema({
   isMale: Boolean,
 });
 
-module.exports = mongoose.model("Person", personSchema);
+const MessageSchema = new Schema({
+  actor: String,
+  text: String,
+});
+
+module.exports = mongoose.model("Messages", MessageSchema);

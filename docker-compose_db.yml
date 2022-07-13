@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 
 services:
   mongo:
@@ -23,6 +23,25 @@ services:
       - MONGO
     depends_on:
       - mongo
+
+  bots:
+    build: ./services/bots
+    container_name: bots
+    environment:
+      COREHOST: core
+      COREPORT: "3000"
+    ports:
+      - "4000:4000"
+    networks:
+      - MONGO
+
+  core:
+    container_name: core
+    build: ./services/core
+    ports:
+      - "3000:3000"
+    networks:
+      - MONGO
 
 networks:
   MONGO:

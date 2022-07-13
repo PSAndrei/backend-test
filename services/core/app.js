@@ -4,7 +4,9 @@ const router = require("./routes");
 const app = express();
 const port = 3000;
 
-const dbUrl = "mongodb://0.0.0.0:27017/db";
+
+
+const dbUrl = "mongodb://MONGO:27017/db";
 app.use(router);
 app.use("/tests", router);
 

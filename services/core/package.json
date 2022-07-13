@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "up": "docker-compose -f ./docker-compose_db.yml up -d",
-    "down": "docker-compose -f ./docker-compose_db.yml down"
+    "up": "docker compose -f ./docker-compose_db.yml up -d",
+    "down": "docker compose -f ./docker-compose_db.yml down"
   },
   "repository": {
     "type": "git",
